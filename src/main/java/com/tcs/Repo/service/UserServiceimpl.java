@@ -1,0 +1,52 @@
+package com.tcs.Repo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.tcs.Repo.mapper.QueryMapper;
+import com.tcs.Repo.model.UserVO;
+
+@Service("userService")
+public class UserServiceimpl implements UserService{
+	
+	@Autowired
+	private QueryMapper querymapper;
+	
+	@Transactional
+	public List<UserVO> getuser(String user){
+		System.out.println("inside service");
+		return querymapper.getuserprof();
+		
+	}
+
+	@Override
+	public UserVO createuser(UserVO uservo) {
+		// TODO Auto-generated method stub
+		querymapper.createuser(uservo);
+		return uservo;
+	}
+
+	@Override
+	public UserVO updateuser(int id, UserVO uservo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserVO deleteuser(int id) {
+		// TODO Auto-generated method stub
+		System.out.println("inside delete service");
+		return null;	
+	}
+
+	@Override
+	public UserVO getuserprofile(int id) {
+		// TODO Auto-generated method stub
+		return querymapper.getuserprofile(id);
+	}
+	
+
+}

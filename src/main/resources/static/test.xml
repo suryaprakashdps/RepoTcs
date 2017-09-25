@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tcs.Repo.mapper.QueryMapper">
+    
+	<select id="getuserprof" resultType="com.tcs.Repo.model.UserVO">
+		select iduser as
+		iduser,email as email,fname as fname,lname as lname,state
+		as state,city
+		as city,cntry as cntry from userprof
+
+	</select>
+	
+	<select id="getuserprofile" resultType="com.tcs.Repo.model.UserVO">
+		select iduser as
+		iduser,email as email,fname as fname,lname as lname,state
+		as state,city
+		as city,cntry as cntry from userprof where iduser= #{id}
+
+	</select>
+	
+		<insert id="createuser">
+		insert into userprof(email,fname,lname,state,city,cntry) 
+		values(#{email},#{fname},#{lname},#{state},#{city},#{cntry}) 
+
+	</insert>
+</mapper>

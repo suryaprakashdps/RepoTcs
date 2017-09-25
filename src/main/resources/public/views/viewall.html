@@ -1,0 +1,19 @@
+<div class="container pad-top">
+  <a ui-sref="adduser" class="btn-primary btn-lg nodecoration">Add New Project</a>
+  <br/>
+  <table class="table usertable">
+      <tr>
+          <td><h3>All Projects</h3></td>
+          <td></td>
+      </tr>
+      <tr ng-repeat="userdata in userdata">
+          <td>{{userdata.fname}}</td>
+          <td>{{userdata.lname}}</td>
+          <td>{{userdata.state}}</td>
+          <td>
+              <a class="btn btn-primary" ui-sref="viewuser({id:userdata.iduser})">View</a>
+              <a class="btn btn-danger"  ng-click="deleteuser(userdata.iduser)">Delete</a>
+          </td>
+      </tr>
+  </table>
+</div>
