@@ -1,5 +1,6 @@
 package com.tcs.Repo.Controller;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tcs.Repo.model.MasterVO;
 import com.tcs.Repo.model.UserVO;
 import com.tcs.Repo.service.UserService;
 
@@ -20,14 +22,16 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "projects", method = RequestMethod.GET)
-	public List<UserVO> list() {
+	public List<MasterVO> list() {
+		
+		List<MasterVO> master_data = userService.getmasterdata();
 
-		String username = "testid@gmail.com";
+		//String username = "testid@gmail.com";
 
-		List<UserVO> userlist = userService.getuser(username);
+		//List<UserVO> userlist = userService.getuser(username);
 
 		//System.out.println("user name" + userlist);
-		return userlist;
+		return master_data;
 	}
 
 	@RequestMapping(value = "projects", method = RequestMethod.POST)
@@ -41,8 +45,11 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "projects/{id}", method = RequestMethod.PUT)
-	public UserVO updateuser(@PathVariable int id, @RequestBody UserVO uservo) {
-		return userService.updateuser(id, uservo);
+	public String updateuser(@PathVariable BigInteger id, @RequestBody MasterVO mastervo) {
+		System.out.println("inside update user controller java"+mastervo);
+		return "success";
+				
+				//userService.updatemasterdata(id, mastervo);
 	}
 
 	@RequestMapping(value = "projects/{id}",method = RequestMethod.DELETE)

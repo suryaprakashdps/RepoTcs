@@ -1,5 +1,6 @@
 package com.tcs.Repo.service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tcs.Repo.mapper.QueryMapper;
+import com.tcs.Repo.model.MasterVO;
 import com.tcs.Repo.model.UserVO;
 
 @Service("userService")
@@ -46,6 +48,20 @@ public class UserServiceimpl implements UserService{
 	public UserVO getuserprofile(int id) {
 		// TODO Auto-generated method stub
 		return querymapper.getuserprofile(id);
+	}
+
+	@Override
+	public List<MasterVO> getmasterdata() {
+		// TODO Auto-generated method stub
+		return querymapper.getmasterdata();
+	}
+
+	@Override
+	public MasterVO updatemasterdata(BigInteger id, MasterVO mastervo) {
+		// TODO Auto-generated method stub
+		
+		querymapper.updatemasterdata(mastervo);
+		return mastervo;
 	}
 	
 

@@ -10,7 +10,7 @@
 		iduser,email as email,fname as fname,lname as lname,state
 		as state,city
 		as city,cntry as cntry from userprof
-
+	
 	</select>
 	
 	<select id="getuserprofile" resultType="com.tcs.Repo.model.UserVO">
@@ -20,6 +20,21 @@
 		as city,cntry as cntry from userprof where iduser= #{id}
 
 	</select>
+	
+		<select id="getmasterdata" resultType="com.tcs.Repo.model.MasterVO">
+		select rec_key,tower,project,onsite_won,offsite_won,near_won,offsite_location,service_line,sub_sp,project_type,onsite_rate,offsite_rate,near_rate,probability,brm_name from
+		master_data
+
+	</select>
+	
+	<update id="updatemasterdata">
+		
+		update master_data set tower=#{tower},project=#{project},onsite_won=#{onsite_won},offsite_won=#{offsite_won},
+		near_won=#{near_won},service_line=#{service_line},sub_sp=#{sub_sp},project_type=#{project_type},onsite_rate=#{onsite_rate},offsite_rate=#{offsite_rate},near_rate=#{near_rate},
+		probability=#{probability},brm_name=#{brm_name},updt_ts=now() where rec_key=#{rec_key}
+		
+
+	</update>
 	
 		<insert id="createuser">
 		insert into userprof(email,fname,lname,state,city,cntry) 

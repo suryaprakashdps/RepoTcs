@@ -1,7 +1,9 @@
 package com.tcs.Repo.service;
 
+import java.math.BigInteger;
 import java.util.List;
 
+import com.tcs.Repo.model.MasterVO;
 import com.tcs.Repo.model.UserVO;
 
 public interface UserService {
@@ -15,5 +17,9 @@ public interface UserService {
 	UserVO deleteuser(int id);
 
 	UserVO getuserprofile(int id);
+
+	List<MasterVO> getmasterdata();
+
+	MasterVO updatemasterdata(BigInteger id, MasterVO mastervo);
 
 }
