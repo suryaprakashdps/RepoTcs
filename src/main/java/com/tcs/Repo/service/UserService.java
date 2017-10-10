@@ -20,6 +20,6 @@ public interface UserService {
 
 	List<MasterVO> getmasterdata();
 
-	MasterVO updatemasterdata(BigInteger id, MasterVO mastervo);
+	MasterVO updatemasterdata(MasterVO mastervo);
 
 }

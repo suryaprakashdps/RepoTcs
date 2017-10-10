@@ -1,6 +1,6 @@
 angular.module('app.services', []).factory('DBService', function($resource) {
-  return $resource('/api/v1/projects/:id', { id: '@id' }, {
-    update: {
+  return $resource('/api/v1/projects', {
+    'update': {
       method: 'PUT'
     }
   });
@@ -17,5 +17,25 @@ angular.module('app.services', []).factory('DBService', function($resource) {
 	    })
 	}
 	
-	}]);
+	}]).service('modelService',[function(){
+		
+		var entity={};
+
+		  var setentity = function(newObj) {
+		      entity=newObj;
+		  };
+
+		  var getentity = function(){
+		      return entity;
+		  };
+
+		  return {
+			  setentity: setentity,
+			  getentity: getentity
+		  };
+		
+	}])
+	
+	
+	;
 

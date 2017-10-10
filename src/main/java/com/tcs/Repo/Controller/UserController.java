@@ -44,12 +44,14 @@ public class UserController {
 		return userService.getuserprofile(id);
 	}
 
-	@RequestMapping(value = "projects/{id}", method = RequestMethod.PUT)
-	public String updateuser(@PathVariable BigInteger id, @RequestBody MasterVO mastervo) {
-		System.out.println("inside update user controller java"+mastervo);
-		return "success";
+	@RequestMapping(value = "projects", method = RequestMethod.PUT)
+	public void updateuser( @RequestBody MasterVO mastervo) {
+		System.out.println("inside update user controller java"+mastervo.getRec_key());
+		//return "success";
+		
+	
 				
-				//userService.updatemasterdata(id, mastervo);
+				userService.updatemasterdata(mastervo);
 	}
 
 	@RequestMapping(value = "projects/{id}",method = RequestMethod.DELETE)

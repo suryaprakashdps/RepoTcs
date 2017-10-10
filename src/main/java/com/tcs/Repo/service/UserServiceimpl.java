@@ -57,7 +57,7 @@ public class UserServiceimpl implements UserService{
 	}
 
 	@Override
-	public MasterVO updatemasterdata(BigInteger id, MasterVO mastervo) {
+	public MasterVO updatemasterdata (MasterVO mastervo) {
 		// TODO Auto-generated method stub
 		
 		querymapper.updatemasterdata(mastervo);
