@@ -64,5 +64,13 @@ public class UserServiceimpl implements UserService{
 		return mastervo;
 	}
 	
+	@Override
+	public MasterVO createproj (MasterVO mastervo) {
+		// TODO Auto-generated method stub
+		
+		querymapper.createprojdata(mastervo);
+		return mastervo;
+	}
+	
 
 }

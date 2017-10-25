@@ -22,7 +22,7 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "projects", method = RequestMethod.GET)
-	public List<MasterVO> list() {
+	public List<MasterVO> masterList() {
 		
 		List<MasterVO> master_data = userService.getmasterdata();
 
@@ -35,8 +35,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "projects", method = RequestMethod.POST)
-	public UserVO create(@RequestBody UserVO uservo) {
-		return userService.createuser(uservo);
+	public MasterVO create(@RequestBody MasterVO mastervo) {
+		return userService.createproj(mastervo);
 	}
 
 	@RequestMapping(value = "projects/{id}", method = RequestMethod.GET)
@@ -47,6 +47,7 @@ public class UserController {
 	@RequestMapping(value = "projects", method = RequestMethod.PUT)
 	public void updateuser( @RequestBody MasterVO mastervo) {
 		System.out.println("inside update user controller java"+mastervo.getRec_key());
+		System.out.println("inside update user controller java"+mastervo.getProject());
 		//return "success";
 		
 	

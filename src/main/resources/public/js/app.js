@@ -61,10 +61,10 @@
 	       controller:'EditMasterController'
 	    })
 	    
-	    .state('adduser',{
+	    .state('addproj',{
 	        url:'/projects/new',
-	        templateUrl: viewsPrefix + 'User-add.html',
-	        controller:'UserCreateController'
+	        templateUrl: viewsPrefix + 'Proj-add.html',
+	        controller:'ProjCreateController'
 	    })
 	       .state('projection',{
 	        url:'/projection',

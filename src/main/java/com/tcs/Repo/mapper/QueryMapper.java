@@ -20,4 +20,5 @@ public interface QueryMapper {
 
 	public void updatemasterdata(MasterVO mastervo);
 
+	public void createprojdata(MasterVO mastervo);
 }

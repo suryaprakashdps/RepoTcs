@@ -1,5 +1,5 @@
 angular.module('app.services', []).factory('DBService', function($resource) {
-  return $resource('/api/v1/projects', {
+  return $resource('/api/v1/projects',{}, {
     'update': {
       method: 'PUT'
     }
@@ -34,8 +34,5 @@ angular.module('app.services', []).factory('DBService', function($resource) {
 			  getentity: getentity
 		  };
 		
-	}])
-	
-	
-	;
+	}]);
 

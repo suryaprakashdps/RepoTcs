@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class App {
 
 	public static void main(String[] args) {
+//		org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(App.class);
 		SpringApplication.run(App.class, args);
 		System.out.println("Application started");
 	}

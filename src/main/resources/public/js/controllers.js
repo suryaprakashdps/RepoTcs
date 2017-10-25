@@ -105,12 +105,12 @@ angular
 					// };
 
 				})
-				.controller('UserCreateController',
+				.controller('ProjCreateController',
 				function($scope, $state, $stateParams, DBService) {
 					$scope.editvalue = new DBService(); // create new user
 					// instance. Properties will be
 					// set via ng-model on UI
-					$scope.adduser = function() { // create a new user. Issues
+					$scope.addproj = function() { // create a new user. Issues
 													// a
 						// POST to /api/v1/projects
 						$scope.editvalue.$save(function() {
@@ -122,9 +122,12 @@ angular
 				})
 				
 				.controller('EditMasterController',
-				function($scope, $stateParams, DBService,modelService) {
+				function($scope,$state, $stateParams, DBService,modelService) {
 					console.log('inside edit master controller');
+	//				debugger;
 					$scope.editvalue=modelService.getentity();
+					
+					console.log('test format for debug options');
 					console.log($scope.editvalue);
 					
 					$scope.updatemaster = function(){
@@ -140,7 +143,7 @@ angular
 						// /api/v1/projects/:id
 				})
 				
-					.controller('ProjectionController',
+				.controller('ProjectionController',
 				function($scope, $stateParams, DBService,modelService) {
 //					
 				})
@@ -151,4 +154,63 @@ angular
 						id : $stateParams.id
 					}); // Get a single user.Issues a GET to
 						// /api/v1/projects/:id
+				})
+				.controller('ProjectionController',
+				function($scope, $state, popupService, $window, DBService, $q,
+						$interval, deleteService,modelService) {
+		
+					// datagrid setup
+		
+					$scope.gridProjection = {
+						exporterMenuCsv : true,
+						enableGridMenu : true,
+						paginationPageSizes : [ 25, 50, 75 ],
+						paginationPageSize : 25,
+						enableFiltering : true,
+						columnDefs : [
+								{
+									name : 'rec_key'
+								},
+								{
+									name : 'month'
+								},
+								{
+									name : 'year'
+								},
+								{
+									name : 'onsite_count'
+								},
+								{
+									name : 'offsite_count'
+								},
+								{
+									name : 'near_count'
+								},
+								{
+									name : 'onsite_rev'
+								},
+								{
+									name : 'offsite_rev'
+								},
+								{
+									name : 'near_rev'
+								},
+								{
+									name : 'total_rev'
+								},
+								{
+									name : 'Holidays'
+								},
+								{
+									name : 'actions',
+									displayName : 'Actions',
+									cellTemplate : '<button id="editBtn" type="button" class="btn btn-primary" ng-click="grid.appScope.masteredit(row.entity)">EDIT</button>'
+		
+							} 
+								]
+					};
+		
+					$scope.gridProjection.data = DBService.query();
+					
+		
 				});

@@ -4,15 +4,15 @@ import java.math.BigInteger;
 
 public class MasterVO {
 	
-	private String rec_key,tower,project,onsite_won,offsite_won,near_won,offsite_location,service_line,sub_sp,project_type,brm_name;
+	private String tower,project,onsite_won,offsite_won,near_won,offsite_location,service_line,sub_sp,project_type,brm_name;
 	private Double onsite_rate,offsite_rate,near_rate;
-	private BigInteger probability;
+	private BigInteger probability, rec_key;
 	
 	
-	public String getRec_key() {
+	public BigInteger getRec_key() {
 		return rec_key;
 	}
-	public void setRec_key(String rec_key) {
+	public void setRec_key(BigInteger rec_key) {
 		this.rec_key = rec_key;
 	}
 	public String getTower() {

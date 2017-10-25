@@ -41,4 +41,44 @@
 		values(#{email},#{fname},#{lname},#{state},#{city},#{cntry}) 
 
 	</insert>
+	
+	<insert id="createprojdata" parameterType="com.tcs.Repo.model.MasterVO">
+	Insert into master_data
+	(
+	rec_key,
+	tower,
+	project,
+	onsite_won,
+	offsite_won,
+	near_won,
+	offsite_location,
+	service_line,
+	sub_sp,
+	project_type,
+	onsite_rate,
+	offsite_rate,
+	near_rate,
+	probability,
+	updt_ts,
+	brm_name
+	)
+	values(
+	(select max(rec_key)+1 from master_data),
+	#{tower},
+	#{project},
+	#{onsite_won},
+	#{offsite_won},
+	#{near_won},
+	#{offsite_location},
+	#{service_line},
+	#{sub_sp},
+	#{project_type},
+	#{onsite_rate},
+	#{offsite_rate},
+	#{near_rate},
+	#{probability},
+	now(),
+	'Vivek'
+	)
+	</insert>
 </mapper>

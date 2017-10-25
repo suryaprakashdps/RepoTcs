@@ -21,5 +21,7 @@ public interface UserService {
 	List<MasterVO> getmasterdata();
 
 	MasterVO updatemasterdata(MasterVO mastervo);
+	
+	MasterVO createproj(MasterVO mastervo);
 
 }
