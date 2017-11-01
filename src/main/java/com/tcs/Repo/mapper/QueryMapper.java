@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.tcs.Repo.model.MasterVO;
+import com.tcs.Repo.model.ProjectionVO;
 import com.tcs.Repo.model.UserVO;
 
 @Mapper
@@ -21,4 +22,12 @@ public interface QueryMapper {
 	public void updatemasterdata(MasterVO mastervo);
 
 	public void createprojdata(MasterVO mastervo);
+	
+	public List<ProjectionVO> getProjectionData();
+	
+	public void updateProjectionData(ProjectionVO projectionVO);
+
+	public void createProjectonData(ProjectionVO projectionVO);
+	
+	
 }

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tcs.Repo.mapper.QueryMapper;
 import com.tcs.Repo.model.MasterVO;
+import com.tcs.Repo.model.ProjectionVO;
 import com.tcs.Repo.model.UserVO;
 
 @Service("userService")
@@ -72,5 +73,26 @@ public class UserServiceimpl implements UserService{
 		return mastervo;
 	}
 	
+	@Override
+	public List<ProjectionVO> getProjectionData() {
+		// TODO Auto-generated method stub
+		return querymapper.getProjectionData();
+	}
+	
+	@Override
+	public ProjectionVO updateProjection (ProjectionVO projectionVO) {
+		// TODO Auto-generated method stub
+		
+		querymapper.updateProjectionData(projectionVO);
+		return projectionVO;
+	}
+	
+	@Override
+	public ProjectionVO createProjecton (ProjectionVO projectionVO) {
+		// TODO Auto-generated method stub
+		
+		querymapper.createProjectonData(projectionVO);
+		return projectionVO;
+	}
 
 }

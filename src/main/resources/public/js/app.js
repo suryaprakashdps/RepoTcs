@@ -71,6 +71,17 @@
 	        templateUrl: viewsPrefix + 'projection.html',
 	        controller:'ProjectionController'
 	    })
+	    .state('editprojection',{
+	       url:'/projection/edit',
+	       templateUrl: viewsPrefix + 'editProjection.html',
+	       controller:'EditProjectionController'
+	    })
+	    
+	    .state('addprojection',{
+	        url:'/projection/new',
+	        templateUrl: viewsPrefix + 'addProjection.html',
+	        controller:'ProjectionCreateController'
+	    })
 	})
 	.directive('updateTitle', ['$rootScope', '$timeout',
 		function($rootScope, $timeout) {

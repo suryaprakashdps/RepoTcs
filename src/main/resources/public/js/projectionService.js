@@ -1,5 +1,5 @@
-angular.module('app.services', []).factory('DBService', function($resource) {
-  return $resource('/api/v1/projects',{}, {
+angular.module('app.services').factory('DBService1', function($resource) {
+  return $resource('/api/v1/projection',{}, {
     'update': {
       method: 'PUT'
     }
@@ -13,7 +13,7 @@ angular.module('app.services', []).factory('DBService', function($resource) {
 	this.deleteUser = function deleteUser(id) {
 	    return $http({
 	        method : 'DELETE',
-	        url : '/api/v1/projects/' + id
+	        url : '/api/v1/projection/' + id
 	    })
 	}
 	
@@ -35,3 +35,4 @@ angular.module('app.services', []).factory('DBService', function($resource) {
 		  };
 		
 	}]);
+

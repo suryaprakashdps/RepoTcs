@@ -143,11 +143,7 @@ angular
 						// /api/v1/projects/:id
 				})
 				
-				.controller('ProjectionController',
-				function($scope, $stateParams, DBService,modelService) {
-//					
-				})
-
+				
 				.controller('UserViewController',
 				function($scope, $stateParams, DBService) {
 					$scope.userdata = DBService.get({
@@ -156,7 +152,7 @@ angular
 						// /api/v1/projects/:id
 				})
 				.controller('ProjectionController',
-				function($scope, $state, popupService, $window, DBService, $q,
+				function($scope, $state, popupService, $window, DBService1, $q,
 						$interval, deleteService,modelService) {
 		
 					// datagrid setup
@@ -178,13 +174,13 @@ angular
 									name : 'year'
 								},
 								{
-									name : 'onsite_count'
+									name : 'onsite_hc'
 								},
 								{
-									name : 'offsite_count'
+									name : 'offsite_hc'
 								},
 								{
-									name : 'near_count'
+									name : 'near_hc'
 								},
 								{
 									name : 'onsite_rev'
@@ -199,18 +195,72 @@ angular
 									name : 'total_rev'
 								},
 								{
-									name : 'Holidays'
+									name : 'holiday_count'
 								},
 								{
 									name : 'actions',
 									displayName : 'Actions',
-									cellTemplate : '<button id="editBtn" type="button" class="btn btn-primary" ng-click="grid.appScope.masteredit(row.entity)">EDIT</button>'
+									cellTemplate : '<button id="editBtn" type="button" class="btn btn-primary" ng-click="grid.appScope.projectionedit(row.entity)">EDIT</button>'
 		
 							} 
 								]
 					};
 		
-					$scope.gridProjection.data = DBService.query();
+					$scope.gridProjection.data = DBService1.query();
+					
+					$scope.projectionedit = function(entity) {
+
+						console.log(entity);
+						
+						modelService.setentity(entity);
+						$scope.datavalue=modelService.getentity();
+						
+						console.log($scope.datavalue);
+						$state.go('editprojection');
+						
+
+
+					};
 					
 		
-				});
+				})
+				
+				.controller('ProjectionCreateController',
+				function($scope, $state, $stateParams, DBService1) {
+					$scope.editvalue = new DBService1(); // create new user
+					// instance. Properties will be
+					// set via ng-model on UI
+					$scope.addprojection = function() { // create a new user. Issues
+													// a
+						// POST to /api/v1/projects
+						$scope.editvalue.$save(function() {
+							$state.go('projection'); // on success go back to the
+													// list
+							// i.e. projects state.
+						});
+					};
+				})
+				
+				.controller('EditProjectionController',
+				function($scope,$state, $stateParams, DBService1,modelService) {
+					console.log('inside edit projection controller');
+	//				debugger;
+					$scope.editvalue=modelService.getentity();
+					
+					console.log('test format for debug options');
+					console.log($scope.editvalue);
+					
+					$scope.updatemaster = function(){
+						
+						$scope.editvalue.$update(function(){
+							$state.go('projection');
+						});
+						
+					};
+//					$scope.userdata = DBService.get({
+//						id : $stateParams.id
+//					}); // Get a single user.Issues a GET to
+						// /api/v1/projects/:id
+				})
+				
+				;

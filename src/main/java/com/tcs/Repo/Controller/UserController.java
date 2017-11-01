@@ -1,6 +1,5 @@
 package com.tcs.Repo.Controller;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tcs.Repo.model.MasterVO;
+import com.tcs.Repo.model.ProjectionVO;
 import com.tcs.Repo.model.UserVO;
 import com.tcs.Repo.service.UserService;
 
@@ -61,4 +61,31 @@ public class UserController {
 		
 		return userService.deleteuser(id);
 	}
+	
+	@RequestMapping(value = "projection", method = RequestMethod.GET)
+	public List<ProjectionVO> projectionList() {
+		
+		List<ProjectionVO> master_data = userService.getProjectionData();
+
+		return master_data;
+	}
+	
+	@RequestMapping(value = "projection", method = RequestMethod.POST)
+	public ProjectionVO create(@RequestBody ProjectionVO projectionvo) {
+		return userService.createProjecton(projectionvo);
+	}
+
+
+	@RequestMapping(value = "projection", method = RequestMethod.PUT)
+	public void updateprojection( @RequestBody ProjectionVO projectionvo) {
+		System.out.println("inside update user controller java"+projectionvo.getRec_key());
+		System.out.println("inside update user controller java"+projectionvo.getTotal_rev());
+		//return "success";
+		
+	
+				
+				userService.updateProjection(projectionvo);
+	}
+
+
 }

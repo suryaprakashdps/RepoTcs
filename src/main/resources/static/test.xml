@@ -81,4 +81,10 @@
 	'Vivek'
 	)
 	</insert>
+	
+	<select id="getProjectionData" resultType="com.tcs.Repo.model.ProjectionVO">
+		select * from projections
+
+	</select>
+	
 </mapper>
