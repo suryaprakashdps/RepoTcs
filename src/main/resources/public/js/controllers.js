@@ -1,5 +1,5 @@
 angular
-		.module('app.controllers', [])
+		.module('app.controllers', ['ngAnimate', 'ui.bootstrap'])
 		.controller(
 				'UserListController',
 				function($scope, $state, popupService, $window, DBService, $q,
@@ -65,12 +65,12 @@ angular
 							} 
 								]
 					};
-//var obj={};
+// var obj={};
 					
-	//				modelService.setentity(obj);
+	// modelService.setentity(obj);
 					$scope.gridOptions.data = DBService.query();
 					
-					//created for master data edit but not used
+					// created for master data edit but not used
 
 					$scope.masteredit = function(entity) {
 
@@ -124,7 +124,7 @@ angular
 				.controller('EditMasterController',
 				function($scope,$state, $stateParams, DBService,modelService) {
 					console.log('inside edit master controller');
-	//				debugger;
+	// debugger;
 					$scope.editvalue=modelService.getentity();
 					
 					console.log('test format for debug options');
@@ -137,9 +137,9 @@ angular
 						});
 						
 					};
-//					$scope.userdata = DBService.get({
-//						id : $stateParams.id
-//					}); // Get a single user.Issues a GET to
+// $scope.userdata = DBService.get({
+// id : $stateParams.id
+// }); // Get a single user.Issues a GET to
 						// /api/v1/projects/:id
 				})
 				
@@ -230,11 +230,13 @@ angular
 					$scope.editvalue = new DBService1(); // create new user
 					// instance. Properties will be
 					// set via ng-model on UI
-					$scope.addprojection = function() { // create a new user. Issues
+					$scope.addprojection = function() { // create a new user.
+														// Issues
 													// a
 						// POST to /api/v1/projects
 						$scope.editvalue.$save(function() {
-							$state.go('projection'); // on success go back to the
+							$state.go('projection'); // on success go back to
+														// the
 													// list
 							// i.e. projects state.
 						});
@@ -244,7 +246,7 @@ angular
 				.controller('EditProjectionController',
 				function($scope,$state, $stateParams, DBService1,modelService) {
 					console.log('inside edit projection controller');
-	//				debugger;
+	// debugger;
 					$scope.editvalue=modelService.getentity();
 					
 					console.log('test format for debug options');
@@ -257,10 +259,63 @@ angular
 						});
 						
 					};
-//					$scope.userdata = DBService.get({
-//						id : $stateParams.id
-//					}); // Get a single user.Issues a GET to
+// $scope.userdata = DBService.get({
+// id : $stateParams.id
+// }); // Get a single user.Issues a GET to
 						// /api/v1/projects/:id
 				})
+				
+				.controller('TypeaheadCtrl', function($scope,$http,DBService,modelService) {
+
+  var _selected;
+  			
+  $scope.selected = undefined;
+  $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+  
+  
+  
+  $scope.projectList= DBService.query();
+	  DBService.query().$promise.then(function(data) {
+    $scope.projectList = data;
+    console.log($scope.projectList[2].project);
+	  return data;
+});
+	  
+	 
+  console.log($scope.projectList);
+  
+  
+  // Any function returning a promise object can be used to load values
+	// asynchronously
+  $scope.getLocation = function(val) {
+    return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
+      params: {
+        address: val,
+        sensor: false
+      }
+    }).then(function(response){
+      return response.data.results.map(function(item){
+        return item.formatted_address;
+      });
+    });
+  };
+
+  $scope.ngModelOptionsSelected = function(value) {
+    if (arguments.length) {
+      _selected = value;
+    } else {
+      return _selected;
+    }
+  };
+
+  $scope.modelOptions = {
+    debounce: {
+      default: 500,
+      blur: 250
+    },
+    getterSetter: true
+  };
+
+})
 				
 				;

@@ -1,4 +1,13 @@
  <form class="form-horizontal" role="form" ng-submit="updateShipwreck()">
+ 
+ <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">Project Name</label>
+    <div class="col-sm-8">
+        <select class="ac-select stateList" ac-model="selectedState" ac-options="s.name for s in getAllStates()" 
+        ac-settings="{ comboMode: true, loadOnOpen: true, minWidth: '300px' }" ac-change="stateSelected(value)"></select>
+    </div>
+</div>
+ 
     <div class="form-group">
     <label for="name" class="col-sm-2 control-label">Tower</label>
     <div class="col-sm-8">
