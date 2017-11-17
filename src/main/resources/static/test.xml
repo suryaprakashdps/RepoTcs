@@ -22,8 +22,7 @@
 	</select>
 	
 		<select id="getmasterdata" resultType="com.tcs.Repo.model.MasterVO">
-		select rec_key,tower,project,onsite_won,offsite_won,near_won,offsite_location,service_line,sub_sp,project_type,onsite_rate,offsite_rate,near_rate,probability,brm_name from
-		master_data
+		select * from  master_data
 
 	</select>
 	
@@ -86,5 +85,35 @@
 		select * from projections
 
 	</select>
+	
+	<insert id="createProjectonData" parameterType="com.tcs.Repo.model.ProjectionVO">
+	Insert into projections
+	(
+	rec_key,	
+	tower,	
+	project	,
+	won_number,	
+	won_type	,
+	month	,
+	year	,
+	resource_count,	
+	revenue	,
+	updt_ts	,
+	updt_user
+	)
+	values(
+	#{rec_key},
+	#{tower},
+	#{project},
+	#{won_number},
+	#{won_type},
+	#{month},
+	2017,
+	#{resource_count},
+	#{revenue},
+	now(),	
+    'Shyam'
+	)
+	</insert>
 	
 </mapper>

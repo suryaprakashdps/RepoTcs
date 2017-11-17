@@ -1,20 +1,14 @@
 package com.tcs.Repo.model;
 
 import java.math.BigInteger;
+import java.sql.Timestamp;
 
 public class MasterVO {
 	
-	private String tower,project,onsite_won,offsite_won,near_won,offsite_location,service_line,sub_sp,project_type,brm_name;
-	private Double onsite_rate,offsite_rate,near_rate;
-	private BigInteger probability, rec_key;
-	
-	
-	public BigInteger getRec_key() {
-		return rec_key;
-	}
-	public void setRec_key(BigInteger rec_key) {
-		this.rec_key = rec_key;
-	}
+	private String tower,project,won_type,offsite_location,service_line,sub_sp,project_type,brm_name,updt_id;
+	private Double rate;
+	private BigInteger rec_key, won_number,	probability;
+	private Timestamp updt_ts;
 	public String getTower() {
 		return tower;
 	}
@@ -27,17 +21,11 @@ public class MasterVO {
 	public void setProject(String project) {
 		this.project = project;
 	}
-	public String getOnsite_won() {
-		return onsite_won;
+	public String getWon_type() {
+		return won_type;
 	}
-	public void setOnsite_won(String onsite_won) {
-		this.onsite_won = onsite_won;
-	}
-	public String getNear_won() {
-		return near_won;
-	}
-	public void setNear_won(String near_won) {
-		this.near_won = near_won;
+	public void setWon_type(String won_type) {
+		this.won_type = won_type;
 	}
 	public String getOffsite_location() {
 		return offsite_location;
@@ -69,23 +57,29 @@ public class MasterVO {
 	public void setBrm_name(String brm_name) {
 		this.brm_name = brm_name;
 	}
-	public Double getOnsite_rate() {
-		return onsite_rate;
+	public String getUpdt_id() {
+		return updt_id;
 	}
-	public void setOnsite_rate(Double onsite_rate) {
-		this.onsite_rate = onsite_rate;
+	public void setUpdt_id(String updt_id) {
+		this.updt_id = updt_id;
 	}
-	public Double getOffsite_rate() {
-		return offsite_rate;
+	public Double getRate() {
+		return rate;
 	}
-	public void setOffsite_rate(Double offsite_rate) {
-		this.offsite_rate = offsite_rate;
+	public void setRate(Double rate) {
+		this.rate = rate;
 	}
-	public Double getNear_rate() {
-		return near_rate;
+	public BigInteger getRec_key() {
+		return rec_key;
 	}
-	public void setNear_rate(Double near_rate) {
-		this.near_rate = near_rate;
+	public void setRec_key(BigInteger rec_key) {
+		this.rec_key = rec_key;
+	}
+	public BigInteger getWon_number() {
+		return won_number;
+	}
+	public void setWon_number(BigInteger won_number) {
+		this.won_number = won_number;
 	}
 	public BigInteger getProbability() {
 		return probability;
@@ -93,11 +87,11 @@ public class MasterVO {
 	public void setProbability(BigInteger probability) {
 		this.probability = probability;
 	}
-	public String getOffsite_won() {
-		return offsite_won;
+	public Timestamp getUpdt_ts() {
+		return updt_ts;
 	}
-	public void setOffsite_won(String offsite_won) {
-		this.offsite_won = offsite_won;
+	public void setUpdt_ts(Timestamp updt_ts) {
+		this.updt_ts = updt_ts;
 	}
-
+	
 }

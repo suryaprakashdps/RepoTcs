@@ -72,6 +72,8 @@ public class UserController {
 	
 	@RequestMapping(value = "projection", method = RequestMethod.POST)
 	public ProjectionVO create(@RequestBody ProjectionVO projectionvo) {
+		System.out.println("inside update user controller java"+projectionvo.getRec_key());
+		System.out.println("inside update user controller java"+projectionvo.getTower());
 		return userService.createProjecton(projectionvo);
 	}
 
@@ -79,7 +81,7 @@ public class UserController {
 	@RequestMapping(value = "projection", method = RequestMethod.PUT)
 	public void updateprojection( @RequestBody ProjectionVO projectionvo) {
 		System.out.println("inside update user controller java"+projectionvo.getRec_key());
-		System.out.println("inside update user controller java"+projectionvo.getTotal_rev());
+		System.out.println("inside update user controller java"+projectionvo.getTower());
 		//return "success";
 		
 	

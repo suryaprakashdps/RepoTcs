@@ -33,22 +33,13 @@ angular
 									name : 'project_type'
 								},
 								{
-									name : 'onsite_won'
+									name : 'won_number'
 								},
 								{
-									name : 'offsite_won'
+									name : 'won_type'
 								},
 								{
-									name : 'near_won'
-								},
-								{
-									name : 'onsite_rate'
-								},
-								{
-									name : 'offsite_rate'
-								},
-								{
-									name : 'near_rate'
+									name : 'rate'
 								},
 								{
 									name : 'probability'
@@ -107,6 +98,7 @@ angular
 				})
 				.controller('ProjCreateController',
 				function($scope, $state, $stateParams, DBService) {
+							  
 					$scope.editvalue = new DBService(); // create new user
 					// instance. Properties will be
 					// set via ng-model on UI
@@ -128,10 +120,10 @@ angular
 					$scope.editvalue=modelService.getentity();
 					
 					console.log('test format for debug options');
-					console.log($scope.editvalue);
+					
 					
 					$scope.updatemaster = function(){
-						
+						console.log($scope.editvalue);
 						$scope.editvalue.$update(function(){
 							$state.go('projects');
 						});
@@ -168,34 +160,31 @@ angular
 									name : 'rec_key'
 								},
 								{
+									name : 'tower'
+								},
+								{
+									name : 'project'
+								},
+								{
+									name : 'won_number'
+								},
+								{
+									name : 'won_type'
+								},
+								{
 									name : 'month'
 								},
 								{
 									name : 'year'
 								},
 								{
-									name : 'onsite_hc'
+									name : 'resource_count'
 								},
 								{
-									name : 'offsite_hc'
+									name : 'revenue'
 								},
 								{
-									name : 'near_hc'
-								},
-								{
-									name : 'onsite_rev'
-								},
-								{
-									name : 'offsite_rev'
-								},
-								{
-									name : 'near_rev'
-								},
-								{
-									name : 'total_rev'
-								},
-								{
-									name : 'holiday_count'
+									name : 'Holiday_count'
 								},
 								{
 									name : 'actions',
@@ -225,36 +214,19 @@ angular
 		
 				})
 				
-				.controller('ProjectionCreateController',
-				function($scope, $state, $stateParams, DBService1) {
-					$scope.editvalue = new DBService1(); // create new user
-					// instance. Properties will be
-					// set via ng-model on UI
-					$scope.addprojection = function() { // create a new user.
-														// Issues
-													// a
-						// POST to /api/v1/projects
-						$scope.editvalue.$save(function() {
-							$state.go('projection'); // on success go back to
-														// the
-													// list
-							// i.e. projects state.
-						});
-					};
-				})
 				
 				.controller('EditProjectionController',
 				function($scope,$state, $stateParams, DBService1,modelService) {
 					console.log('inside edit projection controller');
 	// debugger;
-					$scope.editvalue=modelService.getentity();
+					$scope.projectionValue=modelService.getentity();
 					
 					console.log('test format for debug options');
-					console.log($scope.editvalue);
+					console.log($scope.projectionValue);
 					
 					$scope.updatemaster = function(){
 						
-						$scope.editvalue.$update(function(){
+						$scope.projectionValue.$update(function(){
 							$state.go('projection');
 						});
 						
@@ -265,57 +237,40 @@ angular
 						// /api/v1/projects/:id
 				})
 				
-				.controller('TypeaheadCtrl', function($scope,$http,DBService,modelService) {
+				.controller('ProjectionCreateController', 
+				function($scope,DBService1,DBService,$state, $stateParams) {
 
-  var _selected;
-  			
-  $scope.selected = undefined;
-  $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+					$scope.selected={};
   
   
-  
-  $scope.projectList= DBService.query();
-	  DBService.query().$promise.then(function(data) {
-    $scope.projectList = data;
-    console.log($scope.projectList[2].project);
-	  return data;
-});
+			  $scope.projectList= DBService.query();
+				  DBService.query().$promise.then(function(data) {
+					  $scope.projectList = data;
+					  console.log($scope.projectList[2].project);
+				  return data;
+			});
 	  
 	 
-  console.log($scope.projectList);
+				  console.log($scope.projectList);
   
+				  console.log('VALUE RETURN FROM HTML PAGE');
   
-  // Any function returning a promise object can be used to load values
-	// asynchronously
-  $scope.getLocation = function(val) {
-    return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
-      params: {
-        address: val,
-        sensor: false
-      }
-    }).then(function(response){
-      return response.data.results.map(function(item){
-        return item.formatted_address;
-      });
-    });
-  };
-
-  $scope.ngModelOptionsSelected = function(value) {
-    if (arguments.length) {
-      _selected = value;
-    } else {
-      return _selected;
-    }
-  };
-
-  $scope.modelOptions = {
-    debounce: {
-      default: 500,
-      blur: 250
-    },
-    getterSetter: true
-  };
-
+				  $scope.selected.proc = new DBService1();
+  
+				  $scope.addprojection = function() { 
+					  
+					  $scope.insertProj = $scope.selected.proc;
+					  console.log($scope.insertProj);
+					  
+				console.log('Entered Projection Insert Round2');
+				DBService1.save($scope.insertProj,function(){
+					$state.go('projection'); 
+				});
+	/*			$scope.selected.proc.$save(function() {
+					$state.go('projection'); 
+		});*/
+	};
+			
 })
 				
 				;

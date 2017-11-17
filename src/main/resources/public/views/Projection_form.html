@@ -1,99 +1,87 @@
- <form class="form-horizontal" role="form" ng-submit="updateShipwreck()">
- 
- <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Project Name</label>
-    <div class="col-sm-8">
-        <select class="ac-select stateList" ac-model="selectedState" ac-options="s.name for s in getAllStates()" 
-        ac-settings="{ comboMode: true, loadOnOpen: true, minWidth: '300px' }" ac-change="stateSelected(value)"></select>
-    </div>
-</div>
- 
-    <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Tower</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.tower" class="form-control"/>
-    </div>
-</div>
-   <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Project</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.project" class="form-control"/>
-    </div>
-</div>
 
-   <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Offsite Location</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.offsite_location" class="form-control"/>
-    </div>
-</div>
+<form class="form-horizontal" role="form" ng-submit="addprojection()" >
 
-  <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Service Line</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.service_line" class="form-control"/>
-    </div>
-</div>
+<!-- 	 	<div class='form-group' ng-controller="TypeaheadCtrl"> -->
+<!-- 		<div class='form-group'> -->
+		<div class='form-group'>
+			<label for="name" class="col-sm-2 control-label">Project</label>
 
-  <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">SUB SP</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.sub_sp" class="form-control"/>
-    </div>
-</div>
+			<!-- 		<pre>Model: {{selected.tower | json}}</pre>  -->
+			<div class="col-sm-8">
+				<input type="text" placeholder='Type Project Details' ng-model="selected.proc" ng-init="selected.proc=''"
+					uib-typeahead="item as item.project for item in projectList | filter:$viewValue | limitTo:8"
+					class="form-control">
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">Tower</label>
+			<div class="col-sm-8">
+				<input type="text" ng-model="selected.proc.tower" class="form-control" />
+			</div>
+		</div>
+		
 
-  <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Project Type</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.project_type" class="form-control"/>
-    </div>
-</div>
+		
 
-   <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Onsite WON</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.onsite_won" class="form-control"/>
-    </div>
-</div>
-   <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Nearshore WON</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.near_won" class="form-control"/>
-    </div>
-</div>
-   <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Offsite WON</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.offsite_won" class="form-control"/>
-    </div>
-</div>
-   <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Onsite Rate</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.onsite_rate" class="form-control"/>
-    </div>
-</div>
-   <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Offsite Rate </label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.offsite_rate" class="form-control"/>
-    </div>
-</div>
-   <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Nearshore Rate</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.near_rate" class="form-control"/>
-    </div>
-</div>
-   <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Probability</label>
-    <div class="col-sm-8">
-        <input type="text" ng-model="editvalue.probability" class="form-control"/>
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <input type="submit" class="btn btn-primary" value="Save"/>
-    </div>
-</div>
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">WON</label>
+			<div class="col-sm-8">
+				<input type="text" ng-model="selected.proc.won_number"
+					class="form-control" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">WON LOCATION</label>
+			<div class="col-sm-8">
+				<input type="text" ng-model="selected.proc.won_type"
+					class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">Month</label>
+			<div class="col-sm-8">
+				<input type="text" ng-model="selected.proc.month"
+					class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">Year</label>
+			<div class="col-sm-8">
+				<input type="text" ng-model="selected.proc.Year"
+					class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">Resource Count</label>
+			<div class="col-sm-8">
+				<input type="text" ng-model="selected.proc.resource_count"
+					class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">Revenue</label>
+			<div class="col-sm-8">
+				<input type="text" ng-model="selected.proc.revenue"
+					class="form-control" />
+			</div>
+			
+		</div>
+		
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">Holiday Count</label>
+			<div class="col-sm-8">
+				<input type="text" ng-model="selected.proc.Holiday_count"
+					class="form-control" />
+			</div>
+			
+		</div>
+	
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<input type="submit" class="btn btn-primary" value="Save" />
+		</div>
+	</div>
+	
 </form>

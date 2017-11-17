@@ -1,6 +1,5 @@
 package com.tcs.Repo.service;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +67,7 @@ public class UserServiceimpl implements UserService{
 	@Override
 	public MasterVO createproj (MasterVO mastervo) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Entered Project create method");
 		querymapper.createprojdata(mastervo);
 		return mastervo;
 	}
@@ -90,7 +89,7 @@ public class UserServiceimpl implements UserService{
 	@Override
 	public ProjectionVO createProjecton (ProjectionVO projectionVO) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Entered Projection create method");
 		querymapper.createProjectonData(projectionVO);
 		return projectionVO;
 	}
