@@ -29,5 +29,6 @@ public interface QueryMapper {
 
 	public void createProjectonData(ProjectionVO projectionVO);
 	
+//	public List getDatelist(ProjectionVO projectionVO);
 	
 }

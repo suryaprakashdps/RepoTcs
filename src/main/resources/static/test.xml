@@ -116,4 +116,22 @@
 	)
 	</insert>
 	
+	<insert id="createProjectonDataTst" parameterType="com.tcs.Repo.model.ProjectionVO">
+	Insert into projections
+	Select #{rec_key} as rec_key,
+	#{tower} as tower,
+	#{project} as project,
+	#{won_number} as won_number,
+	#{won_type} as won_type,
+	#{month} as month,
+	#{year} as year,
+	#{resource_count} as resource_count,
+	#{revenue} as revenue,
+	now() as updt_ts,	
+    'Shyam' as updt_user
+    from acct_date where date_actual ;gt date(now())-1 and date_actual ;lt date(now())+(#{ExtProjection}::text || ' month')::interval
+	</insert>
+	
+	
+	
 </mapper>

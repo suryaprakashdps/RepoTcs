@@ -29,6 +29,8 @@ public interface UserService {
 	ProjectionVO updateProjection(ProjectionVO projectionVO);
 	
 	ProjectionVO createProjecton(ProjectionVO projectionVO);
+/*
+	List getDateList(ProjectionVO projectionvo);*/
 	
 	
 

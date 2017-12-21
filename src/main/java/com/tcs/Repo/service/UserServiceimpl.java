@@ -94,4 +94,10 @@ public class UserServiceimpl implements UserService{
 		return projectionVO;
 	}
 
+	
+	/*public List getDateList(ProjectionVO projectionvo) {
+		// TODO Auto-generated method stub
+		return null;
+	}*/
+
 }

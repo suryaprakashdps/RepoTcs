@@ -1,6 +1,11 @@
 package com.tcs.Repo.Controller;
 
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -74,6 +79,15 @@ public class UserController {
 	public ProjectionVO create(@RequestBody ProjectionVO projectionvo) {
 		System.out.println("inside update user controller java"+projectionvo.getRec_key());
 		System.out.println("inside update user controller java"+projectionvo.getTower());
+		/*List futureDate = new ArrayList();
+		futureDate = userService.getDateList(projectionvo);
+		for(Object futureObj : futureDate)
+		{
+			Map<String,Object> dateMap = (Map<String,Object>) futureObj;
+			projectionvo.setMonth(((String)dateMap.get("month_name_abbreviated")));
+			projectionvo.setYear(((Integer)dateMap.get("year_actual")));
+			userService.createProjecton(projectionvo);
+		}*/
 		return userService.createProjecton(projectionvo);
 	}
 

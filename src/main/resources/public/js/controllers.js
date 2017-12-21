@@ -207,8 +207,6 @@ angular
 						console.log($scope.datavalue);
 						$state.go('editprojection');
 						
-
-
 					};
 					
 		

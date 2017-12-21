@@ -8,16 +8,14 @@
 
 			<!-- 		<pre>Model: {{selected.tower | json}}</pre>  -->
 			<div class="col-sm-8">
-				<input type="text" placeholder='Type Project Details' ng-model="selected.proc" ng-init="selected.proc=''"
-					uib-typeahead="item as item.project for item in projectList | filter:$viewValue | limitTo:8"
-					class="form-control">
+				<input type="text" ng-model="projectionValue.project" class="form-control" />
 			</div>
 		</div>
 	
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Tower</label>
 			<div class="col-sm-8">
-				<input type="text" ng-model="selected.proc.tower" class="form-control" />
+				<input type="text" ng-model="projectionValue.tower" class="form-control" />
 			</div>
 		</div>
 		
@@ -27,7 +25,7 @@
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">WON</label>
 			<div class="col-sm-8">
-				<input type="text" ng-model="selected.proc.won_number"
+				<input type="text" ng-model="projectionValue.won_number"
 					class="form-control" />
 			</div>
 		</div>
@@ -35,21 +33,21 @@
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">WON LOCATION</label>
 			<div class="col-sm-8">
-				<input type="text" ng-model="selected.proc.won_type"
+				<input type="text" ng-model="projectionValue.won_type"
 					class="form-control" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Month</label>
 			<div class="col-sm-8">
-				<input type="text" ng-model="selected.proc.month"
+				<input type="text" ng-model="projectionValue.month"
 					class="form-control" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Year</label>
 			<div class="col-sm-8">
-				<input type="text" ng-model="selected.proc.Year"
+				<input type="text" ng-model="projectionValue.Year"
 					class="form-control" />
 			</div>
 		</div>
@@ -57,7 +55,7 @@
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Future Projection in Months</label>
 			<div class="col-sm-8">
-				<input type="text" ng-model="selected.proc.ExtProjection" ng-init="0"
+				<input type="text" ng-model="projectionValue.ExtProjection" ng-init="0"
 					class="form-control" />
 			</div>
 		</div>
@@ -65,14 +63,14 @@
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Resource Count</label>
 			<div class="col-sm-8">
-				<input type="text" ng-model="selected.proc.resource_count"
+				<input type="text" ng-model="projectionValue.resource_count"
 					class="form-control" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Revenue</label>
 			<div class="col-sm-8">
-				<input type="text" ng-model="selected.proc.revenue"
+				<input type="text" ng-model="projectionValue.revenue"
 					class="form-control" />
 			</div>
 			
@@ -81,7 +79,7 @@
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Holiday Count</label>
 			<div class="col-sm-8">
-				<input type="text" ng-model="selected.proc.Holiday_count"
+				<input type="text" ng-model="projectionValue.Holiday_count"
 					class="form-control" />
 			</div>
 			

@@ -1,14 +1,11 @@
 package com.tcs.Repo.model;
 
-import java.math.BigInteger;
-import java.sql.Timestamp;
 
 public class ProjectionVO {
 	
 	private String tower, project, won_type, month, updt_user;
 	private Double revenue;
-	private BigInteger rec_key, Year, resource_count, Holiday_count,won_number;
-	private Timestamp updt_ts;
+	private Integer rec_key, Year, resource_count, Holiday_count,won_number, ExtProjection;
 	public String getTower() {
 		return tower;
 	}
@@ -20,12 +17,6 @@ public class ProjectionVO {
 	}
 	public void setProject(String project) {
 		this.project = project;
-	}
-	public BigInteger getWon_number() {
-		return won_number;
-	}
-	public void setWon_number(BigInteger won_number) {
-		this.won_number = won_number;
 	}
 	public String getWon_type() {
 		return won_type;
@@ -51,36 +42,43 @@ public class ProjectionVO {
 	public void setRevenue(Double revenue) {
 		this.revenue = revenue;
 	}
-	public BigInteger getRec_key() {
+	public Integer getRec_key() {
 		return rec_key;
 	}
-	public void setRec_key(BigInteger rec_key) {
+	public void setRec_key(Integer rec_key) {
 		this.rec_key = rec_key;
 	}
-	public BigInteger getYear() {
+	public Integer getYear() {
 		return Year;
 	}
-	public void setYear(BigInteger year) {
-		this.Year = year;
+	public void setYear(Integer year) {
+		Year = year;
 	}
-	public BigInteger getResource_count() {
+	public Integer getResource_count() {
 		return resource_count;
 	}
-	public void setResource_count(BigInteger resource_count) {
+	public void setResource_count(Integer resource_count) {
 		this.resource_count = resource_count;
 	}
-	public BigInteger getHoliday_count() {
+	public Integer getHoliday_count() {
 		return Holiday_count;
 	}
-	public void setHoliday_count(BigInteger holiday_count) {
+	public void setHoliday_count(Integer holiday_count) {
 		Holiday_count = holiday_count;
 	}
-	public Timestamp getUpdt_ts() {
-		return updt_ts;
+	public Integer getWon_number() {
+		return won_number;
 	}
-	public void setUpdt_ts(Timestamp updt_ts) {
-		this.updt_ts = updt_ts;
+	public void setWon_number(Integer won_number) {
+		this.won_number = won_number;
 	}
+	public Integer getExtProjection() {
+		return ExtProjection;
+	}
+	public void setExtProjection(Integer extProjection) {
+		ExtProjection = extProjection;
+	}
+
 	
 	
 	
