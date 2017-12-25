@@ -22,14 +22,14 @@
 	</select>
 	
 		<select id="getmasterdata" resultType="com.tcs.Repo.model.MasterVO">
-		select * from  master_data
+		select * from  master_data order by rec_key
 
 	</select>
 	
 	<update id="updatemasterdata">
 		
-		update master_data set tower=#{tower},project=#{project},onsite_won=#{onsite_won},offsite_won=#{offsite_won},
-		near_won=#{near_won},service_line=#{service_line},sub_sp=#{sub_sp},project_type=#{project_type},onsite_rate=#{onsite_rate},offsite_rate=#{offsite_rate},near_rate=#{near_rate},
+		update master_data set tower=#{tower},project=#{project},won_number=#{won_number},won_type=#{won_type},service_line=#{service_line},sub_sp=#{sub_sp},project_type=#{project_type},
+		rate=#{rate},
 		probability=#{probability},brm_name=#{brm_name},updt_ts=now() where rec_key=#{rec_key}
 		
 
@@ -47,42 +47,42 @@
 	rec_key,
 	tower,
 	project,
-	onsite_won,
-	offsite_won,
-	near_won,
+	won_number,
+	won_type,
+	
 	offsite_location,
 	service_line,
 	sub_sp,
 	project_type,
-	onsite_rate,
-	offsite_rate,
-	near_rate,
+	rate,
 	probability,
 	updt_ts,
+	updt_id
 	brm_name
 	)
 	values(
 	(select max(rec_key)+1 from master_data),
 	#{tower},
 	#{project},
-	#{onsite_won},
-	#{offsite_won},
-	#{near_won},
+	#{won_number},
+	#{won_type},
+	
 	#{offsite_location},
 	#{service_line},
 	#{sub_sp},
 	#{project_type},
-	#{onsite_rate},
-	#{offsite_rate},
-	#{near_rate},
+
+	#{rate},
+	
 	#{probability},
 	now(),
-	'Vivek'
+	"user",
+	#{brm_name}
 	)
 	</insert>
 	
 	<select id="getProjectionData" resultType="com.tcs.Repo.model.ProjectionVO">
-		select * from projections
+		select * from projections order by rec_key
 
 	</select>
 	
@@ -112,7 +112,7 @@
 	#{resource_count},
 	#{revenue},
 	now(),	
-    'Shyam'
+    'User'
 	)
 	</insert>
 	

@@ -9,6 +9,7 @@ public class MasterVO {
 	private Double rate;
 	private BigInteger rec_key, won_number,	probability;
 	private Timestamp updt_ts;
+	
 	public String getTower() {
 		return tower;
 	}

@@ -51,7 +51,7 @@ angular
 								{
 									name : 'actions',
 									displayName : 'Actions',
-									cellTemplate : '<button id="editBtn" type="button" class="btn btn-primary" ng-click="grid.appScope.masteredit(row.entity)">EDIT</button>'
+									cellTemplate : '<button id="editBtn" type="button" class="glyphicon glyphicon-pencil" ng-click="grid.appScope.masteredit(row.entity)"></button>'
 
 							} 
 								]
@@ -112,7 +112,7 @@ angular
 						});
 					};
 				})
-				
+					
 				.controller('EditMasterController',
 				function($scope,$state, $stateParams, DBService,modelService) {
 					console.log('inside edit master controller');
@@ -134,6 +134,32 @@ angular
 // }); // Get a single user.Issues a GET to
 						// /api/v1/projects/:id
 				})
+				
+				.controller('ProjImportController',
+				function($scope,$http, $state, $stateParams, importService,$interval) {
+						$scope.data = [];
+						  $scope.gridOptions = {
+						    enableGridMenu: true,
+						    data: 'data',
+						    importerDataAddCallback: function ( grid, newObjects ) {
+						    	
+						      $scope.data = $scope.data.concat( newObjects );
+						      
+						      importService.importservice($scope.data);
+						      
+						 //     $scope.data.importupdate=new DBService();
+						      console.log($scope.data);
+					//	   $scope.importdata.dbdata=$scope.data;
+						//      console.log("import data is");
+						//      console.log($scope.importdata.data);
+						    //  $scope.data.importupdate.$save();
+						    },
+						    onRegisterApi: function(gridApi){
+						      $scope.gridApi = gridApi;
+						    }
+						    }
+				})
+				
 				
 				
 				.controller('UserViewController',
